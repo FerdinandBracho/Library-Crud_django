@@ -1,0 +1,56 @@
+{% extends 'core/main.html' %}
+
+
+{% block main_content %}
+
+
+<style>
+
+    .card-h:hover {
+    background-color: white;
+    }
+
+    .card-h {
+    background-color: rgb(244, 243, 248);
+    }
+
+    h1 {
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      margin: 1rem;
+      margin-bottom: 4rem;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:link {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}
+</style>
+
+<h1>List Of Books</h1>
+    <div class="d-flex flex-wrap">
+        {% for book in object_list %}
+        <div class="card" style="width: 21rem; margin: 1rem;" >
+            <div class="card-body card-h">
+                <a href="{% url 'books:detail' book.pk %}"> <h5 class="card-title"> {{book.title}} </h5> </a>
+                <h6 class="card-subtitle mb-2 text-muted"> 
+                    <p> <strong>Author(s):</strong>
+                    {% for author in object.author.all %} 
+                        {{author}}
+                    {% endfor %}
+                    </p>
+                </h6>
+            </div>
+        </div>  
+        {% endfor %}
+    </div>
+
+{% endblock main_content%}
