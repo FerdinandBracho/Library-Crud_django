@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 ('publishing_year', models.DateField()),
                 ('pages', models.IntegerField()),
                 ('author', models.ManyToManyField(to='books.AuthorModel')),
-                ('publushing_house', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='books.publishinghouse')),
+                ('publshing_house', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='books.publishinghouse')),
             ],
         ),
     ]

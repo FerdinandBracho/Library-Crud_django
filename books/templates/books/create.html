@@ -1,1 +1,50 @@
 {% extends 'core/main.html' %}
+{% block main_content %}
+    <style>
+
+        h1 {
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin: 1rem;
+        margin-bottom: 9rem;
+        }
+
+        .div-form {
+            border-radius: 10px;
+            background-color: rgb(100, 98, 105);
+        }
+
+        .form-input {
+            margin: 1rem;
+        }
+
+    </style>
+
+    <div class= "d-flex flex-column justify-content-center">
+        <div>
+        <h1>Create Book</h1>
+        </div>
+
+        <div class="d-flex justify-content-center m-3">
+            <div class="div-form">
+
+            {% for input in form.errors %}
+                {{form.input.errors}}
+                {{input}}
+            {% endfor %}
+
+                <form class="d-flex flex-column justify-content-between" method="POST" action="" style="height: 50vh; width: 20vw;">
+                    <div class="form-input form-label d-flex justify-content-between">{{form.title.label}} {{form.title}}</div>
+                    <div class="form-input form-label d-flex justify-content-between">{{form.author.label}} {{form.author}}</div>
+                    <div class="form-input form-label d-flex justify-content-between">{{form.publishing_year.label}} {{form.publishing_year}}</div>
+                    <div class="form-input form-label d-flex justify-content-between">{{form.publushing_house.label}} {{form.publushing_house}}</div>
+                    <div class="form-input form-label d-flex justify-content-between">{{form.pages.label}} {{form.pages}}</div>
+                    {% csrf_token %}
+                    <button class="form-input btn btn-dark"type="SUBMIT">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock main_content %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from .models import Book
 
 # Create your views here.
@@ -16,7 +16,7 @@ class BooksListView(ListView):
 
 class BookDetailView(DetailView):
     template_name = 'books/detail.html'
-    page_title = 'Detail Book'
+    page_title = 'Book Detail'
     model = Book
 
     def get_context_data(self, **kwargs):
@@ -35,9 +35,17 @@ class DeleteBookTemplateView(TemplateView):
         context['page_title'] = self.page_title
         return context
 
-class CreateBookTemplateView(TemplateView):
+class CreateViewBook(CreateView):
     template_name =  'books/create.html'
     page_title = 'Create Book'
+    model = Book
+    fields = (
+        'title',
+        'author',
+        'publishing_year',
+        'publishing_house',
+        'pages',
+    )
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

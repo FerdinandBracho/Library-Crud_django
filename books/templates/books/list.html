@@ -3,7 +3,6 @@
 
 {% block main_content %}
 
-
 <style>
 
     .card-h:hover {
@@ -36,17 +35,17 @@ a:visited {
 </style>
 
 <h1>List Of Books</h1>
-    <div class="d-flex flex-wrap">
+    <div class="d-flex flex-wrap justify-content-center">
         {% for book in object_list %}
-        <div class="card" style="width: 21rem; margin: 1rem;" >
+        <div class="card" style="width: 20rem; margin: 1rem;" >
             <div class="card-body card-h">
                 <a href="{% url 'books:detail' book.pk %}"> <h5 class="card-title"> {{book.title}} </h5> </a>
+                <hr>
                 <h6 class="card-subtitle mb-2 text-muted"> 
-                    <p> <strong>Author(s):</strong>
-                    {% for author in object.author.all %} 
-                        {{author}}
-                    {% endfor %}
-                    </p>
+                        <strong>Author(s):</strong>
+                        {% for author in book.author.all  %}
+                            {{author.first_name}} {{author.last_name}}.
+                        {% endfor %}
                 </h6>
             </div>
         </div>  
