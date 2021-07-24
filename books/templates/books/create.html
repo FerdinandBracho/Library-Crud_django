@@ -34,6 +34,15 @@
 
         <div class="d-flex justify-content-center m-3">
             <div class="div-form">
+
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger m-2">
+                        {{error}}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
                 <form class="d-flex flex-column justify-content-between" method="POST" action="" style="height: 5   0vh; width: 20vw;">
                     <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.title.label}}</div>{{form.title}}</div>
                     <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.author.label}}</div> {{form.author}}</div>
@@ -41,13 +50,6 @@
                     <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.publishing_house.label}}</div> {{form.publishing_house}}</div>
                     <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.pages.label}}</div>{{form.pages}}</div>
                     {% csrf_token %}
-
-                    {% comment %} 
-                    <div class="form-floating mb-3">
-                        <input type="{{form.title}}" class="form-control" id="input-title">
-                        <label for="input-title">Title</label>
-                    </div> 
-                    {% endcomment %}
 
                     <button class="form-input btn btn-dark" type="SUBMIT" >Create</button>
                 </form>
