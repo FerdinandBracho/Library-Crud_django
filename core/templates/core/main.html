@@ -34,7 +34,7 @@
                   <a class="nav-link {{nav_text_create}}" href="{% url 'books:create' %}">New Book</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link {{nav_text_delete}}" href="{% url 'core:contact' %}">Contact</a>
+                  <a class="nav-link {{nav_text_contact}}" href="{% url 'core:contact' %}">Contact</a>
                 </li>
               </div>
           </ul>
@@ -45,9 +45,9 @@
                 </li>
                 <li class="nav-item">
                   {% if user.is_authenticated %}
-                    <a class="nav-link {{nav_text_delete}}" href="{% url 'core:logout' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'core:logout' %}">Logout</a>
                   {% else %}
-                    <a class="nav-link {{nav_text_delete}}" href="{% url 'core:login' %}">Login</a>
+                    <a class="nav-link {{nav_text_login}}" href="{% url 'core:login' %}">Login</a>
                   {% endif %}
                 </li>
               </div>

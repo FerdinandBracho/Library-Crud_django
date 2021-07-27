@@ -28,6 +28,7 @@ class ContactFormView(FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = 'Thank-You'
+        context['nav_text_contact'] = 'active'
         return context
 
     def form_valid(self, form):
