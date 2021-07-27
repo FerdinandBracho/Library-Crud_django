@@ -29,7 +29,11 @@
     <div class= "d-flex flex-column justify-content-center">
 
         <div>
-        <h1>Create Book</h1>
+        {% if book_pk %}
+            <h1>Edit Book</h1>
+        {% else %}
+            <h1>New Book</h1>
+        {% endif %}
         </div>
 
         <div class="d-flex justify-content-center m-3">
@@ -43,7 +47,7 @@
                     {% endfor %}
                 {% endfor %}
 
-                <form class="d-flex flex-column justify-content-between" method="POST" action="" style="height: 5   0vh; width: 20vw;">
+                <form class="d-flex flex-column justify-content-between" method="POST" action="" style="width: 22rem;">
                     <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.title.label}}</div>{{form.title}}</div>
                     <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.author.label}}</div> {{form.author}}</div>
                     <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.publishing_year.label}}</div>{{form.publishing_year}}</div>
@@ -51,11 +55,16 @@
                     <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.pages.label}}</div>{{form.pages}}</div>
                     {% csrf_token %}
 
-                    <button class="form-input btn btn-dark" type="SUBMIT" >Create</button>
+
+                    {% if book_pk %}
+                    <button class="form-input btn btn-dark btn-lg" type="SUBMIT" >Edit</button>
+                    {% else %}
+                    <button class="form-input btn btn-dark btn-lg" type="SUBMIT" >Create</button>
+                    {% endif %}
+
                 </form>
             </div>
         </div>
-    
     </div>
 
 {% endblock main_content %}

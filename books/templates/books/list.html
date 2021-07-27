@@ -27,7 +27,13 @@
 
     a:link {
   color: black;
-}
+  }
+
+  h3 {
+    color: white;
+    font-weight: bold;
+    margin-left: 2vw;
+    }   
 
 a:visited {
   color: black;
@@ -35,6 +41,7 @@ a:visited {
 </style>
 
 <h1>List Of Books</h1>
+<h3>Libros Registrados: {{count}}</h3>
     <div class="d-flex flex-wrap justify-content-center">
         {% for book in object_list %}
         <div class="card" style="width: 20rem; margin: 1rem;" >

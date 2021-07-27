@@ -1,1 +1,32 @@
 {% extends 'core/main.html' %}
+
+{% block main_content %}
+    <style>
+        h1 {
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin: 1rem;
+        margin-bottom: 9rem;
+        }
+
+        .div-form {
+            border-radius: 10px;
+            background-color: rgb(100, 98, 105);
+        }
+    </style>
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div>
+        <h1>Delete this book?</h1>
+        </div>
+
+        <form  class="div-form d-flex justify-content-around align-items-center" style="height: 20vh; width: 25rem;" action="" method="POST">
+
+                <a href=" {% url 'books:detail' object.pk %}" class="btn btn-dark btn-lg" style="width: 10rem;">Cancel</a>
+                <button type="submit" class="btn  btn-danger btn-lg" style="width: 10rem;">Delete</button>
+            
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock main_content %}

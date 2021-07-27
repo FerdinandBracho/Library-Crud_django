@@ -1,10 +1,54 @@
 {% extends 'core/main.html' %}
 
 {% block main_content %}
-    <form action="./" method="POST">
-        {{form.as_p}}
-        {% csrf_token %}
-        <button type="submit">Submit</button>
-    </form>
+        <style>
+        h1 {
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin: 1rem;
+        margin-bottom: 4rem;
+        }
+
+        .div-form {
+            border-radius: 10px;
+            background-color: rgb(100, 98, 105);
+        }
+
+        .form-input {
+            margin: 1rem;
+        }
+        
+        .input-label {
+            color: white;
+            font-weight: bolder;
+        }
+    </style>
+
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <div>
+        <h1>Contact Us</h1>
+        </div>
+
+        <div class="div-form"a>
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger m-2">
+                        {{error}}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <form class="d-flex flex-column justify-content-between" style="width: 22rem;" action="./" method="POST">
+                <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.name.label}}</div>{{form.name}}</div>
+                <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.email.label}}</div>{{form.email}}</div>
+                <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.phone.label}}</div>{{form.phone}}</div>
+                <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{form.message.label}}</div>{{form.message}}</div>
+
+                {% csrf_token %}
+                <button class="form-input btn btn-dark btn-lg" type="SUBMIT">Submit</button>
+            </form>
+        </div>
+    </div>
 {% endblock main_content %}
 
