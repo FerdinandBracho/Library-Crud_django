@@ -1,0 +1,71 @@
+{% extends 'core/main.html' %}
+{% block main_content %}
+  <style>
+  h1 {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  margin: 1rem;
+  margin-bottom: 4rem;
+  }
+
+  .div-form {
+      border-radius: 10px;
+      background-color: rgb(100, 98, 105);
+  }
+
+  .form-input {
+      margin: 1rem;
+  }
+
+  .input-label {
+      color: white;
+      font-weight: bolder;
+  }
+  </style>
+
+  <div class="d-flex flex-column justify-content-center align-items-center">
+    <div>
+      <h1>Sign up Form</h1>
+    </div>    
+        <div class="div-form">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger m-2">
+                        {{error}}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+          <form method="post" class="d-flex flex-column justify-content-between" style="width: 22rem;" >
+          {% for field in form %}
+            <div class="form-input form-label d-flex flex-column justify-content-between"><div class="input-label">{{ field.label_tag }}</div>{{ field }}</div>
+          {% endfor %}
+          {% csrf_token %}
+          <button class="form-input btn btn-dark btn-lg" type="SUBMIT">Submit</button>
+
+          </form>
+      </div>
+  </div>
+{% endblock main_content %}
+
+
+
+
+
+
+  {% for field in form %}
+    <p>
+      {{ field.label_tag }}<br>
+      {{ field }}
+
+      {% if field.help_text %}
+        <small style="color: grey">{{ field.help_text }}</small>
+      {% endif %}
+
+      {% for error in field.errors %}
+        <p style="color: red">{{ error }}</p>
+      {% endfor %}
+
+    </p>
+  {% endfor %}

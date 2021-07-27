@@ -1,6 +1,5 @@
-from django.shortcuts import render
 from django.views.generic import TemplateView, FormView
-from core.forms import ContactForm
+from core.forms import ContactForm, SingUpForm
 
 # Create your views here.
 class IndexTemplateView(TemplateView):
@@ -34,3 +33,19 @@ class ContactFormView(FormView):
     def form_valid(self, form):
         form.load_in_db()
         return super().form_valid(form)
+
+class SingUpFormView(FormView):
+    template_name = 'core/singup.html'
+    form_class = SingUpForm
+    success_url = '/account/login'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav_text_singup'] = 'active'
+        return context
+
+    def form_valid(self, form):
+        form.save()
+        # form.authenticate_user(self)
+        return super().form_valid(form)
+

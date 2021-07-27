@@ -1,6 +1,6 @@
 from django.urls import path, include
-from .views import IndexTemplateView, ContactFormView, ThankYouTemplateView
-from django.contrib.auth import REDIRECT_FIELD_NAME, views as auth_views
+from .views import IndexTemplateView, ContactFormView, ThankYouTemplateView, SingUpFormView
+from django.contrib.auth import views as auth_views
 
 app_name = 'core'
 
@@ -13,4 +13,5 @@ urlpatterns = [
     path('account/', include('django.contrib.auth.urls'), name='account'),
     path('account/login', auth_views.LoginView.as_view(extra_context={'nav_text_login':'active'}), name='login'),
     path('account/logout', auth_views.LogoutView.as_view(next_page='books:list'), name='logout'),
+    path('account/singup', SingUpFormView.as_view(), name='singup'),
 ]

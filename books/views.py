@@ -3,6 +3,7 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 from .models import Book
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
+
 # Create your views here.
 class BooksListView(ListView):
     template_name = 'books/list.html'
